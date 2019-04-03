@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -9,9 +9,12 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.myapplication.R;
+import com.example.myapplication.model.HomeBean;
+
 import java.util.List;
 
-import static com.example.myapplication.R.layout.recyclerview_item;
+import static com.example.myapplication.R.layout.item_sensor;
 
 /**
  * <pre>
@@ -22,19 +25,19 @@ import static com.example.myapplication.R.layout.recyclerview_item;
  *     version: 1.0
  * </pre>
  */
-public class rec_item_Adapter extends RecyclerView.Adapter<rec_item_Adapter.MyViewHolder> implements View.OnClickListener {
+public class SensorAdapter extends RecyclerView.Adapter<SensorAdapter.MyViewHolder> implements View.OnClickListener {
     private List<HomeBean> list;
     private Context con;
     private LayoutInflater inflater;
 
-    public rec_item_Adapter(List<HomeBean> list, Context con) {
+    public SensorAdapter(List<HomeBean> list, Context con) {
         this.con = con;
         this.list = list;
         inflater = LayoutInflater.from(con);
     }
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view= inflater.inflate(recyclerview_item,null);
+        View view= inflater.inflate(item_sensor,null);
         MyViewHolder myViewHolder =new MyViewHolder(view);
         return myViewHolder;
 
@@ -77,8 +80,8 @@ public class rec_item_Adapter extends RecyclerView.Adapter<rec_item_Adapter.MyVi
             mButton = itemView.findViewById(R.id.button);
             mimageView=itemView.findViewById(R.id.imageView);
             // 为ItemView添加点击事件
-            itemView.setOnClickListener(rec_item_Adapter.this);
-            mButton.setOnClickListener(rec_item_Adapter.this);
+            itemView.setOnClickListener(SensorAdapter.this);
+            mButton.setOnClickListener(SensorAdapter.this);
         }
     }
     //=======================以下为item中的button控件点击事件处理===================================
@@ -108,7 +111,7 @@ public class rec_item_Adapter extends RecyclerView.Adapter<rec_item_Adapter.MyVi
         int position = (int) v.getTag();      //getTag()获取数据
         if (mOnItemClickListener != null) {
             switch (v.getId()){
-                case R.id.recyclerView:
+                case R.id.sensorview:
                     mOnItemClickListener.onItemClick(v, ViewName.PRACTISE, position);
                     break;
                 default:
