@@ -22,4 +22,6 @@ public class MainActivity extends AppCompatActivity {
         ft.add(R.id.container, homeFragment);
         ft.commit();
     }
+
+
 }
